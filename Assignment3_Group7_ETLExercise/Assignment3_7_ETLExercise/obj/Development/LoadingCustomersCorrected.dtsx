@@ -1,0 +1,2571 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2017 12:53:23 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SCOTT_D_LAPTOP"
+  DTS:CreatorName="Scott_D_Laptop\Scott"
+  DTS:DTSID="{D35518F9-7FC3-40F8-9AAC-E694079670E7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="LoadingCustomersCorrected"
+  DTS:PackageType="5"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{107D3972-439A-48F5-9A19-35CDAE9F22CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnection_Staging_Area]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8EA6C4B6-2BCF-4C7E-91EC-2DD441BFF702}"
+      DTS:ObjectName="DestinationConnection_Staging_Area">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SCOTT_D_LAPTOP;Initial Catalog=Staging_Area;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{45AE92BB-2ACC-4E92-8049-386A6EE386AE}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3081"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\Scott\Documents\Assignment3_7_ETLExercise\Assignment3_7_ETLExercise\CustomerData.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerKey"
+              DTS:DTSID="{82D378C2-3F19-41D1-A52C-575006312831}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="11"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerAlternateKey"
+              DTS:DTSID="{7563FA14-13CE-42DF-9FB6-452801E32CB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="32"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{A3E2C6C7-02A5-46A6-966D-77E69DD92B8D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MiddleInitial"
+              DTS:DTSID="{D16F3C03-7E31-472F-AEF4-0B31F1D4476F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="32"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{7F9A1BE0-702F-4DBC-8ABB-13B6EC76C8AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MaritalStatus"
+              DTS:DTSID="{DA976B74-7ECC-412E-B085-3D882A40DD4D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{C540F983-A2C9-4FAD-B0D8-E1307083FD5D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DateOfBirth"
+              DTS:DTSID="{7BB39566-282D-47BB-8D69-2DE386F7C073}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PhoneNumber"
+              DTS:DTSID="{75A74102-CEEA-4C5A-A738-13454992037C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="64"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StreetAddress"
+              DTS:DTSID="{106DEDB8-CF4A-4073-AF25-0286A70A4D3D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="32"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{24C20E3C-CDBB-4A1A-82F1-252D4AAC968E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StateProvinceCode"
+              DTS:DTSID="{E20592B3-883E-490D-81EE-D7CF6231F474}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="32"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StateProvinceName"
+              DTS:DTSID="{C23A4DC5-83C4-45C7-9C1E-34012C3E4288}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryCode"
+              DTS:DTSID="{63A724AF-9761-4B3C-BD68-5D1015F77B7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="32"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryName"
+              DTS:DTSID="{D508B828-4A56-451C-B7EB-D515C843DBFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PostCode "
+              DTS:DTSID="{1208F39A-432E-46BE-8958-7120AE4B2633}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Correct then Insert Customer Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4EFB9598-B28D-4474-BDB9-10E8BD6582D5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Correct then Insert Customer Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert CustomerKey to int, DateOfBirth to Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input].Columns[CustomerKey]"
+                      cachedDataType="numeric"
+                      cachedName="CustomerKey"
+                      cachedPrecision="18"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input].Columns[DateOfBirth]"
+                      cachedDataType="date"
+                      cachedName="DateOfBirth"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[CusKeyInt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[CusKeyInt]"
+                      name="CusKeyInt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[BirthDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Correct then Insert Customer Data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[StreetAddress]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="64"
+                      cachedName="StreetAddress"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") - 5)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") - 5)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[City]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="City"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") - 4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") - 4)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[StateProvinceCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StateProvinceCode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") - 3)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") - 3)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[StateProvinceName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="StateProvinceName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") - 2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") - 2)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[CountryCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") - 1)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[CountryName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="CountryName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},","))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,","))</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input].Columns[PostCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PostCode "
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]"
+                      name="PostCode"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",",[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]} + "," + #{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") + 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",",TOKENCOUNT(StreetAddress + "," + City + "," + StateProvinceCode + "," + StateProvinceName + "," + CountryCode + "," + CountryName + "," + PostCode,",") + 1)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column)"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Filter out postcodes with ',' delimiters in them (final column)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input].Columns[PostCode ]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PostCode "
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Incorrect]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Incorrect"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[TOKENCOUNT](#{Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]},",") != 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">TOKENCOUNT([PostCode ],",") != 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Formatted]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Formatted"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Correct then Insert Customer Data\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="3081"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Correct then Insert Customer Data\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerAlternateKey]"
+                      length="11"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]"
+                      name="CustomerAlternateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[FirstName]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MiddleInitial]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MiddleInitial]"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MiddleInitial]"
+                      name="MiddleInitial"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[LastName]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateOfBirth]"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]"
+                      name="DateOfBirth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PhoneNumber]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PhoneNumber]"
+                      length="24"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PhoneNumber]"
+                      name="PhoneNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StreetAddress]"
+                      length="64"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]"
+                      name="StreetAddress"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvinceCode]"
+                      length="10"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]"
+                      name="StateProvinceCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryCode]"
+                      length="3"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryName]"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PostCode ]"
+                      length="10"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]"
+                      name="PostCode "
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerKey]"
+                      dataType="numeric"
+                      name="CustomerKey"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CustomerAlternateKey]"
+                      codePage="65001"
+                      dataType="str"
+                      length="11"
+                      name="CustomerAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MiddleInitial]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="MiddleInitial" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DateOfBirth]"
+                      dataType="date"
+                      name="DateOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PhoneNumber]"
+                      codePage="65001"
+                      dataType="str"
+                      length="24"
+                      name="PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StreetAddress]"
+                      codePage="65001"
+                      dataType="str"
+                      length="64"
+                      name="StreetAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvinceCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PostCode ]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      name="PostCode " />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Correct then Insert Customer Data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CustomerData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">65001</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Correct then Insert Customer Data\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnection_Staging_Area]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnection_Staging_Area]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerAlternateKey]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="CustomerAlternateKey"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAlternateKey]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerAlternateKey]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MiddleInitial]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MiddleInitial"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleInitial]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MiddleInitial]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PhoneNumber]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="PhoneNumber"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StreetAddress]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="64"
+                      cachedName="StreetAddress"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreetAddress]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StreetAddress]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StateProvinceCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StateProvinceCode"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceCode]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CountryCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CusKeyInt]"
+                      cachedDataType="i4"
+                      cachedName="CusKeyInt"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CusKeyInt]" />
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                      cachedDataType="date"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[BirthDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAlternateKey]"
+                      codePage="65001"
+                      dataType="str"
+                      length="11"
+                      name="CustomerAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleInitial]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="MiddleInitial" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateOfBirth]"
+                      dataType="dbDate"
+                      name="DateOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                      codePage="65001"
+                      dataType="str"
+                      length="16"
+                      name="PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreetAddress]"
+                      codePage="65001"
+                      dataType="str"
+                      length="64"
+                      name="StreetAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostCode ]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      name="PostCode " />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Correct then Insert Customer Data\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[CustomerKey]"
+                      cachedDataType="numeric"
+                      cachedName="CustomerKey"
+                      cachedPrecision="18"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[CustomerAlternateKey]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="CustomerAlternateKey"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerAlternateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[FirstName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="FirstName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[MiddleInitial]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MiddleInitial"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MiddleInitial]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MiddleInitial]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[LastName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="LastName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[MaritalStatus]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[Gender]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Gender"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[DateOfBirth]"
+                      cachedDataType="date"
+                      cachedName="DateOfBirth"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[DateOfBirth]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[PhoneNumber]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="PhoneNumber"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PhoneNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PhoneNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[StreetAddress]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="64"
+                      cachedName="StreetAddress"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StreetAddress]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[City]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="City"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[StateProvinceCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StateProvinceCode"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[StateProvinceName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[CountryCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[CountryName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="CountryName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[PostCode ]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PostCode "
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PostCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[CusKeyInt]"
+                      cachedDataType="i4"
+                      cachedName="CusKeyInt"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[CusKeyInt]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CusKeyInt]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1].Columns[BirthDate]"
+                      cachedDataType="date"
+                      cachedName="BirthDate"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[BirthDate]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[CustomerKey]"
+                      cachedDataType="numeric"
+                      cachedName="CustomerKey"
+                      cachedPrecision="18"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[CustomerAlternateKey]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="CustomerAlternateKey"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerAlternateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[FirstName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="FirstName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[MiddleInitial]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MiddleInitial"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MiddleInitial]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MiddleInitial]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[LastName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="LastName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[MaritalStatus]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[Gender]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Gender"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[DateOfBirth]"
+                      cachedDataType="date"
+                      cachedName="DateOfBirth"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[DateOfBirth]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[DateOfBirth]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[PhoneNumber]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="PhoneNumber"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PhoneNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PhoneNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[StreetAddress]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="64"
+                      cachedName="StreetAddress"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StreetAddress]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StreetAddress]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[City]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="City"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[StateProvinceCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="StateProvinceCode"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[StateProvinceName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[CountryCode]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[CountryName]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="32"
+                      cachedName="CountryName"
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[CountryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[CusKeyInt]"
+                      cachedDataType="i4"
+                      cachedName="CusKeyInt"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[CusKeyInt]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CusKeyInt]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[BirthDate]"
+                      cachedDataType="date"
+                      cachedName="BirthDate"
+                      lineageId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[BirthDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2].Columns[PostCode ]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PostCode "
+                      lineageId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output].Columns[PostCode ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PostCode]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerKey]"
+                      dataType="numeric"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerAlternateKey]"
+                      codePage="65001"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CustomerAlternateKey]"
+                      name="CustomerAlternateKey" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MiddleInitial]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MiddleInitial]"
+                      name="MiddleInitial" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      codePage="65001"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[DateOfBirth]"
+                      dataType="date"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[DateOfBirth]"
+                      name="DateOfBirth" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PhoneNumber]"
+                      codePage="65001"
+                      dataType="str"
+                      length="24"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PhoneNumber]"
+                      name="PhoneNumber" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StreetAddress]"
+                      codePage="65001"
+                      dataType="str"
+                      length="64"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StreetAddress]"
+                      name="StreetAddress" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[City]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceCode]"
+                      name="StateProvinceCode" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryName]"
+                      codePage="65001"
+                      dataType="str"
+                      length="32"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PostCode]"
+                      codePage="65001"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[PostCode]"
+                      name="PostCode" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CusKeyInt]"
+                      dataType="i4"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[CusKeyInt]"
+                      name="CusKeyInt" />
+                    <outputColumn
+                      refId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[BirthDate]"
+                      dataType="date"
+                      lineageId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1].Columns[BirthDate]"
+                      name="BirthDate" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Data Conversion Output]"
+              endId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Inputs[Conditional Split Input]"
+              name="Data Conversion Output"
+              startId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Derived Column Output]"
+              endId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Correct then Insert Customer Data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Flat File Source Output]"
+              endId="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Correct then Insert Customer Data\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Formatted]"
+              endId="Package\Correct then Insert Customer Data\Union All.Inputs[Union All Input 2]"
+              name="Formatted"
+              startId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Formatted]" />
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Incorrect]"
+              endId="Package\Correct then Insert Customer Data\Derived Column.Inputs[Derived Column Input]"
+              name="Incorrect"
+              startId="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column).Outputs[Incorrect]" />
+            <path
+              refId="Package\Correct then Insert Customer Data.Paths[Union All Output 1]"
+              endId="Package\Correct then Insert Customer Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Correct then Insert Customer Data\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create CustomerData table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3071CD55-8895-40AC-98B4-2B1A9669B21D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create CustomerData table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EA6C4B6-2BCF-4C7E-91EC-2DD441BFF702}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[CustomerData] (&#xA;[CustomerKey] int,&#xA;[CustomerAlternateKey] varchar(11),&#xA;[FirstName] varchar(32),&#xA;[MiddleInitial] varchar(2),&#xA;[LastName] varchar(32),&#xA;[MaritalStatus] varchar(2),&#xA;[Gender] varchar(2),&#xA;[DateOfBirth] date,&#xA;[PhoneNumber] varchar(24),&#xA;[StreetAddress] varchar(64),&#xA;[City] varchar(32),&#xA;[StateProvinceCode] varchar(10),&#xA;[StateProvinceName] varchar(32),&#xA;[CountryCode] varchar(3),&#xA;[CountryName] varchar(32),&#xA;[PostCode ] varchar(10)&#xA;)&#xA;GO&#xA;GO"
+          SQLTask:CodePage="65001" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop CustomerData table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5E8F561F-B449-4173-8C0E-152E38752AAD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop CustomerData table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EA6C4B6-2BCF-4C7E-91EC-2DD441BFF702}"
+          SQLTask:SqlStatementSource="IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomerData]') AND TYPE IN (N'U'))&#xA;DROP TABLE [dbo].[CustomerData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{79AD6DB9-0808-4900-9014-070AC675612D}"
+      DTS:From="Package\Drop CustomerData table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Create CustomerData table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E87F3978-CE79-4D7A-B7D2-1A59433AA395}"
+      DTS:From="Package\Create CustomerData table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Correct then Insert Customer Data" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="242,42"
+          Id="Package\Correct then Insert Customer Data"
+          TopLeft="88,238" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Create CustomerData table"
+          TopLeft="79,137" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Drop CustomerData table"
+          TopLeft="65,48" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="164,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,47"
+              Start="0,0"
+              End="18,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="14,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,23.5"
+                    Point2="18,23.5"
+                    Point3="18,27.5" />
+                  <mssgle:LineSegment
+                    End="18,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="182,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27,59"
+              Start="0,0"
+              End="27,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="23,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23,29.5"
+                    Point2="27,29.5"
+                    Point3="27,33.5" />
+                  <mssgle:LineSegment
+                    End="27,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Correct then Insert Customer Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Correct then Insert Customer Data\Derived Column"
+          TopLeft="168,361" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Correct then Insert Customer Data\OLE DB Destination"
+          TopLeft="694,443" />
+        <NodeLayout
+          Size="362,42"
+          Id="Package\Correct then Insert Customer Data\Filter out postcodes with ',' delimiters in them (final column)"
+          TopLeft="141,264" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Correct then Insert Customer Data\Flat File Source"
+          TopLeft="75,53" />
+        <NodeLayout
+          Size="309,42"
+          Id="Package\Correct then Insert Customer Data\Convert CustomerKey to int, DateOfBirth to Date"
+          TopLeft="154,181" />
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Data Conversion Output]"
+          TopLeft="308.5,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.5,41"
+              Start="0,0"
+              End="13.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="9.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,20.5"
+                    Point2="13.5,20.5"
+                    Point3="13.5,24.5" />
+                  <mssgle:LineSegment
+                    End="13.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Incorrect]"
+          TopLeft="322,306">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-77,55"
+              Start="0,0"
+              End="-77,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="-4,27.5" />
+                  <mssgle:LineSegment
+                    End="-73,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-73,27.5"
+                    Point2="-77,27.5"
+                    Point3="-77,31.5" />
+                  <mssgle:LineSegment
+                    End="-77,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-59.14798828125,32.5,41.2959765625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Flat File Source Output]"
+          TopLeft="150.5,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="158,86"
+              Start="0,0"
+              End="158,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="4,43" />
+                  <mssgle:LineSegment
+                    End="154,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="154,43"
+                    Point2="158,43"
+                    Point3="158,47" />
+                  <mssgle:LineSegment
+                    End="158,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Correct then Insert Customer Data\Union All"
+          TopLeft="519,397" />
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Derived Column Output]"
+          TopLeft="322,382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,36"
+              Start="0,0"
+              End="189.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,32"
+                    Point2="98.5,36"
+                    Point3="102.5,36" />
+                  <mssgle:LineSegment
+                    End="189.5,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Formatted]"
+          TopLeft="381,306">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.5,91"
+              Start="0,0"
+              End="198.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6402640264026" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.6402640264026"
+                    Point2="0,36.6402640264026"
+                    Point3="4,36.6402640264026" />
+                  <mssgle:LineSegment
+                    End="194.5,36.6402640264026" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194.5,36.6402640264026"
+                    Point2="198.5,36.6402640264026"
+                    Point3="198.5,40.6402640264026" />
+                  <mssgle:LineSegment
+                    End="198.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="76.27201171875,41.6402640264026,45.9559765625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Correct then Insert Customer Data.Paths[Union All Output 1]"
+          TopLeft="640,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,46"
+              Start="0,0"
+              End="46.5,46">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23,0"
+                    Point2="27,0"
+                    Point3="27,4" />
+                  <mssgle:LineSegment
+                    End="27,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27,42"
+                    Point2="27,46"
+                    Point3="31,46" />
+                  <mssgle:LineSegment
+                    End="46.5,46" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Correct then Insert Customer Data\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
